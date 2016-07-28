@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://burnishtechcn.github.io/"/>
+  <link href="http://blog.burnish.cn/"/>
   <updated>2016-07-28T07:46:53.000Z</updated>
-  <id>https://burnishtechcn.github.io/</id>
+  <id>http://blog.burnish.cn/</id>
   
   <author>
     <name>burnish</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Atom - The hackable text editor</title>
-    <link href="https://burnishtechcn.github.io/posts/Atom-The-hackable-text-editor/"/>
-    <id>https://burnishtechcn.github.io/posts/Atom-The-hackable-text-editor/</id>
+    <link href="http://blog.burnish.cn/posts/Atom-The-hackable-text-editor/"/>
+    <id>http://blog.burnish.cn/posts/Atom-The-hackable-text-editor/</id>
     <published>2016-07-27T09:11:03.000Z</published>
     <updated>2016-07-28T07:46:53.000Z</updated>
     
@@ -114,8 +114,8 @@
   
   <entry>
     <title>npm 私有仓库搭建</title>
-    <link href="https://burnishtechcn.github.io/posts/build-private-npm-repository-server/"/>
-    <id>https://burnishtechcn.github.io/posts/build-private-npm-repository-server/</id>
+    <link href="http://blog.burnish.cn/posts/build-private-npm-repository-server/"/>
+    <id>http://blog.burnish.cn/posts/build-private-npm-repository-server/</id>
     <published>2016-07-26T05:38:31.000Z</published>
     <updated>2016-07-28T08:31:57.000Z</updated>
     
@@ -176,8 +176,8 @@
   
   <entry>
     <title>使用Hexo写博客</title>
-    <link href="https://burnishtechcn.github.io/posts/use-Hexo/"/>
-    <id>https://burnishtechcn.github.io/posts/use-Hexo/</id>
+    <link href="http://blog.burnish.cn/posts/use-Hexo/"/>
+    <id>http://blog.burnish.cn/posts/use-Hexo/</id>
     <published>2016-07-04T06:05:08.000Z</published>
     <updated>2016-07-28T08:31:45.000Z</updated>
     
