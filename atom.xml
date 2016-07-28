@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Burnish</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://burnishtechcn.github.io/"/>
+  <updated>2016-07-27T09:21:03.000Z</updated>
+  <id>https://burnishtechcn.github.io/</id>
+  
+  <author>
+    <name>burnish</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Atom - The hackable text editor</title>
+    <link href="https://burnishtechcn.github.io/2016/07/27/Atom-The-hackable-text-editor/"/>
+    <id>https://burnishtechcn.github.io/2016/07/27/Atom-The-hackable-text-editor/</id>
+    <published>2016-07-27T09:11:03.000Z</published>
+    <updated>2016-07-27T09:21:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/atom/atom" target="_blank" rel="external">Atom</a> 起初是一个 GitHub 内部的小项目，后来发展壮大成为一个正式的开源项目。Atom 基于 <a href="https://github.com/electron/electron" target="_blank" rel="external">Electron</a>（Electron 是一个可以让你用 JavaScript, HTML 和 CSS 来写跨平台桌面应用程序的框架），Atom 是用 <a href="http://coffeescript.org" target="_blank" rel="external">CoffeeScript</a> 写的，相当于一个 Web App，也正是因为这样，其可定制程度非常高。</p>
+<p>如果你以前用过 Sublime Text，你会发现 Atom 和 Sublime 非常像，连快捷键都基本一样，但是它们真的没有关系。</p>
+<h2 id="为什么使用-Atom"><a href="#为什么使用-Atom" class="headerlink" title="为什么使用 Atom"></a>为什么使用 Atom</h2><h3 id="开源"><a href="#开源" class="headerlink" title="开源"></a>开源</h3><p>GitHub 开源了 <a href="https://github.com/atom/atom" target="_blank" rel="external">Atom</a> 和构建它的内核 <a href="https://github.com/electron/electron" target="_blank" rel="external">Electron</a>，开源两年以来所取得的成绩非常耀眼：</p>
+<ul>
+<li>110 万月度活跃用户</li>
+<li>1590 万次下载</li>
+<li>300 个新版本发布</li>
+<li>超过 1144 位贡献者</li>
+<li>6.2 万次代码提交</li>
+<li>5897 个 Pull Request</li>
+<li>920 万次的月度访问量</li>
+<li>GitHub 上接近 3 万个 Star</li>
+<li>Atom 社区也快速发展</li>
+</ul>
+<p><img src="http://img.l.jifangcheng.com/atom-2.png" alt="Atom"></p>
+<h3 id="跨平台"><a href="#跨平台" class="headerlink" title="跨平台"></a>跨平台</h3><p>你可以在 macOS，Windows 以及各种 Linux 发行版本上使用 Atom</p>
+<h3 id="apm-Atom-Package-Manager"><a href="#apm-Atom-Package-Manager" class="headerlink" title="apm: Atom Package Manager"></a>apm: Atom Package Manager</h3><p>apm 是 Atom 官方的内建的包管理器，你可以在 <a href="https://atom.io/packages" target="_blank" rel="external">https://atom.io/packages</a> 查看所有的 Atom 扩展（插件，主题）</p>
+<p>你可以在 Atom 的偏好设置里面添加、更新、删除和管理 Atom 的扩展</p>
+<p>apm 还提供了一个命令行工具，你可以使用 <code>apm install xx</code> 来为 Atom 安装扩展，你可以使用 <code>apm --help</code> 来查看 apm 支持的所有命令</p>
+<p>关于 apm 的更多文档你可以去 <a href="https://github.com/atom/apm" target="_blank" rel="external">https://github.com/atom/apm</a> 看看</p>
+<h3 id="漂亮的界面"><a href="#漂亮的界面" class="headerlink" title="漂亮的界面"></a>漂亮的界面</h3><p>你可以使用 Atom 官方提供的主题和社区贡献的主题来美化你的 Atom，如果你还不喜欢，你甚至可以自己来自定义你的 Atom 界面</p>
+<p><img src="http://img.l.jifangcheng.com/atom-5.png" alt=""><br><img src="http://img.l.jifangcheng.com/atom-6.png" alt=""><br><img src="http://img.l.jifangcheng.com/atom-7.png" alt=""><br><img src="http://img.l.jifangcheng.com/atom-8.png" alt=""><br><img src="http://img.l.jifangcheng.com/atom-9.png" alt=""><br><img src="http://img.l.jifangcheng.com/atom-10.png" alt=""><br><img src="http://img.l.jifangcheng.com/atom-11.png" alt=""></p>
+<h3 id="The-hackable-text-editor"><a href="#The-hackable-text-editor" class="headerlink" title="The hackable text editor"></a>The hackable text editor</h3><h4 id="更智能的自动补全"><a href="#更智能的自动补全" class="headerlink" title="更智能的自动补全"></a>更智能的自动补全</h4><p>不仅仅是语言关键字的补全，还可以补全路径，使用过的包名，函数，变量名等等</p>
+<p><img src="http://img.l.jifangcheng.com/atom-3.png" alt=""></p>
+<h4 id="多行编辑"><a href="#多行编辑" class="headerlink" title="多行编辑"></a>多行编辑</h4><p>类似于 Sublime，Atom 也支持多行编辑，它允许你同时编辑多行文本。比如说你需要把一个文档里面的 <code>(&#39;some text&#39;)</code> 替换为 <code>(&quot;some text&quot;)</code>，多行编辑就派上用场了，选中关键词后使用 ctrl/cmd + d 选择下一个这个词，使用 ctrl/cmd + k 可以跳过某个关键词，全部选中关键词后就可以对它们进行编辑了</p>
+<p><img src="http://img.l.jifangcheng.com/atom-4.png" alt=""></p>
+<h4 id="多窗口"><a href="#多窗口" class="headerlink" title="多窗口"></a>多窗口</h4><p>你可以在多窗口中编辑不同的文件</p>
+<p><img src="http://img.l.jifangcheng.com/atom-13.png" alt=""></p>
+<p>也可以在多窗口中编辑相同的文件</p>
+<p><img src="http://img.l.jifangcheng.com/atom-14.png" alt=""></p>
+<h4 id="VIM-模式"><a href="#VIM-模式" class="headerlink" title="VIM 模式"></a>VIM 模式</h4><p>Atom 官方提供了对 VIM 编辑模式的支持</p>
+<p><img src="http://img.l.jifangcheng.com/atom-12.png" alt=""></p>
+<p>你可以在 Atom 中使用 VIM 的基本功能（没有插件的 VIM）</p>
+<h4 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h4><p>你可以在你的用户目录下的 <code>.atom/snippets.cson</code> 中定义代码片段，定义了代码片段之后你就可以使用你定义的快捷单词 + tab 键来插入一段代码</p>
+<figure class="highlight cson"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># .source.python 表明下面的这些代码片段只能在 python 文件中使用</span></div><div class="line"><span class="string">'.source.python'</span>:</div><div class="line">  <span class="string">'Header'</span>:</div><div class="line">    <span class="string">'prefix'</span>: <span class="string">'head'</span></div><div class="line">    <span class="string">'body'</span>: <span class="string">'''</span></div><div class="line">      #!/usr/bin/env python</div><div class="line">      # coding=utf-8</div><div class="line">    '''</div><div class="line"></div><div class="line">  <span class="string">'ipdb'</span>:</div><div class="line">    <span class="string">'prefix'</span>: <span class="string">'ipdb'</span></div><div class="line">    <span class="string">'body'</span>: <span class="string">"__import__('ipdb').set_trace()"</span></div></pre></td></tr></table></figure>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><ul>
+<li>ctrl/cmd + p 快速切换文件</li>
+<li>ctrl/cmd + shift + p 打开功能面板</li>
+<li>ctrl + g 快速跳转到文件的某一行</li>
+<li>ctrl/cmd + x 删除一整行</li>
+<li>ctrl/cmd + r 在文件内的函数定义间跳转</li>
+</ul>
+<h3 id="Sublime-VS-Atom"><a href="#Sublime-VS-Atom" class="headerlink" title="Sublime VS Atom"></a>Sublime VS Atom</h3><p>我以前也是 Sublime 的用户，后来转到了 Atom，我对这两个编辑器都还算是了解，所以来说一下各自相比于对方的优缺点。</p>
+<p>Sublime 的优点</p>
+<ul>
+<li>启动速度快，更稳定</li>
+</ul>
+<p>Atom 的优点</p>
+<ul>
+<li>活跃的开源社区</li>
+<li>强大的官方的包管理器</li>
+<li>高度可定制</li>
+<li>更好的 VIM 模式（Sublime 3 的 VIM 模式居然还有 BUG）</li>
+</ul>
+<h2 id="一些不足"><a href="#一些不足" class="headerlink" title="一些不足"></a>一些不足</h2><ul>
+<li>启动速度慢</li>
+<li>编辑大型文件显得有些吃力</li>
+</ul>
+<h2 id="一些好用的-Atom-插件"><a href="#一些好用的-Atom-插件" class="headerlink" title="一些好用的 Atom 插件"></a>一些好用的 Atom 插件</h2><h3 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h3><ul>
+<li><a href="https://atom.io/packages/trailing-spaces" target="_blank" rel="external">trailing-spaces</a> - 高亮多余的空格</li>
+<li><a href="https://atom.io/packages/vim-mode" target="_blank" rel="external">vim-mode</a> - vim 模式</li>
+<li><a href="https://atom.io/packages/ex-mode" target="_blank" rel="external">ex-mode</a> - vim 模式的拓展</li>
+<li><a href="https://atom.io/packages/minimap" target="_blank" rel="external">minimap</a> - 右侧小地图</li>
+<li><a href="https://atom.io/packages/autocomplete-paths" target="_blank" rel="external">autocomplete-paths</a> - 对路径选择进行增强</li>
+<li><a href="https://atom.io/packages/atom-beautify" target="_blank" rel="external">atom-beautify</a> - 自动美化代码格式</li>
+</ul>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
+<li><a href="http://nuclide.io" target="_blank" rel="external">Nuclide</a> - 用于编写 React Native</li>
+<li><a href="https://atom.io/packages/emmet" target="_blank" rel="external">Emmet</a> - 快速编写 HTML</li>
+<li><a href="https://atom.io/packages/tag" target="_blank" rel="external">tag</a> - Sublime 风格的 HTML 标签自动闭合</li>
+<li><a href="https://atom.io/packages/color-picker" target="_blank" rel="external">color-picker</a> - CSS 颜色取色器</li>
+<li><a href="https://atom.io/packages/autoprefixer" target="_blank" rel="external">autoprefixer</a> - 自动补全 CSS 前缀</li>
+<li><a href="https://atom.io/packages/linter-jshint" target="_blank" rel="external">linter-jshint</a> - JavaScript 语法检查</li>
+</ul>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><ul>
+<li><a href="https://atom.io/packages/autocomplete-python" target="_blank" rel="external">autocomplete-python</a> - 对Python提示进行增强</li>
+<li><a href="https://atom.io/packages/linter-flake8" target="_blank" rel="external">linter-flake8</a> - Python 语法检查</li>
+<li><a href="https://atom.io/packages/python-tools" target="_blank" rel="external">python-tools</a> - 一些有用的 Python 开发工具集</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://github.com/atom/atom&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Atom&lt;/a&gt; 起初是一个 GitHub 内部的小项目，后来发展壮大成为一个正式的开源项目。Atom 基于 &lt;a href=&quot;htt
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>npm 私有仓库搭建</title>
+    <link href="https://burnishtechcn.github.io/2016/07/26/npm%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/"/>
+    <id>https://burnishtechcn.github.io/2016/07/26/npm私有仓库搭建/</id>
+    <published>2016-07-26T05:38:31.000Z</published>
+    <updated>2016-07-27T01:48:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="为什么搭建私有的-npm-仓库"><a href="#为什么搭建私有的-npm-仓库" class="headerlink" title="为什么搭建私有的 npm 仓库"></a>为什么搭建私有的 npm 仓库</h2><ul>
+<li>发布和管理公司内部的私有的、暂不公开的 npm 包</li>
+<li>加速 npm 包的下载，npm 官方仓库在国内太慢了</li>
+</ul>
+<h2 id="了解-sinopia"><a href="#了解-sinopia" class="headerlink" title="了解 sinopia"></a>了解 sinopia</h2><p><a href="https://github.com/rlidwka/sinopia" target="_blank" rel="external">https://github.com/rlidwka/sinopia</a><br>sinopia 是一个用于搭建私有的 npm 仓库的软件，我们将借助它来搭建 npm 私有仓库。</p>
+<p>sinopia 安装和使用都极其简单，它还有以下的特性：</p>
+<ul>
+<li>支持安装 npm 包（npm install, npm upgrade, etc.）</li>
+<li>支持发布 npm 包（npm publish）</li>
+<li>支持 npm unpublish</li>
+<li>即将支持 npm tag</li>
+<li>不支持 npm deprecate</li>
+<li>支持 npm adduser</li>
+<li>支持在浏览器端搜索，不支持命令行搜索</li>
+<li>不支持 npm star, npm unstar，因为这对私有 npm 包没有意义</li>
+<li>sinopia 没有使用数据库来存储，它使用本地的文件系统来存储</li>
+</ul>
+<h2 id="使用-sinopia"><a href="#使用-sinopia" class="headerlink" title="使用 sinopia"></a>使用 sinopia</h2><h3 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 安装和使用</div><div class="line">$ npm install -g sinopia</div><div class="line">$ sinopia</div><div class="line"></div><div class="line"># npm 配置，使用 sinopia 搭建的 npm 仓库来下载 npm 包</div><div class="line">$ npm set registry http://localhost:4873/</div></pre></td></tr></table></figure>
+<p>sinopia 界面<br><img src="http://img.l.jifangcheng.com/sinopia-1.png" alt="sinopia"></p>
+<p>服务器搭建完成之后，就可以使用 <code>http://localhost:4873/</code> 作为仓库地址来下载和发布 npm 包了。</p>
+<p>当你使用 <code>npm install xx</code> 后，sinopia 会检查本地有没有 xx 这个包，如果有，直接使用本地的缓存；如果没有，它会从 npm 官方仓库下载这个包，并将这个包缓存在本地以便二次下载。sinopia 并不会同步 npm 官方仓库的所有内容，它只会缓存你使用 <code>npm install</code> 下载过的内容。</p>
+<p>如果要发布私有包，使用 <code>npm publish --registry=http://localhost:4873/</code> 就可以了，发布好了你就可以在 web 端界面上看到它了。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>添加一个新用户：<code>npm adduser --registry http://localhost:4873/</code>，接下来输入用户名和密码就可以了，用户可以用来做权限管理</p>
+<p>配置文件详解</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># 你可以在这里找到更多配置示例：</span></div><div class="line"><span class="comment"># https://github.com/rlidwka/sinopia/tree/master/conf</span></div><div class="line"><span class="comment">#</span></div><div class="line"></div><div class="line"><span class="comment"># 存储 npm 包的位置</span></div><div class="line"><span class="attr">storage:</span> ./storage</div><div class="line"></div><div class="line"><span class="comment"># 认证</span></div><div class="line"><span class="comment"># max_users 设置成 -1 拒绝使用 npm adduser 添加用户，不过在公司内部我们可以使用 htpasswd 这个文件来初始化用户</span></div><div class="line"><span class="comment"># 具体的会在下面说到</span></div><div class="line"><span class="attr">auth:</span></div><div class="line"><span class="attr">  htpasswd:</span></div><div class="line"><span class="attr">    file:</span> ./htpasswd</div><div class="line"><span class="attr">    max_users:</span> <span class="bullet">-1</span></div><div class="line"></div><div class="line"><span class="comment"># 配置上游的 npm 服务器，主要是用于当仓库中不存在请求的那个包时去上游服务器拉取</span></div><div class="line"><span class="attr">uplinks:</span></div><div class="line"><span class="attr">  npmjs:</span></div><div class="line"><span class="attr">    url:</span> https://registry.npmjs.org/</div><div class="line"></div><div class="line"><span class="attr">packages:</span></div><div class="line">  <span class="comment"># 正则表达式匹配包来控制相应的权限</span></div><div class="line">  <span class="comment"># access 表示哪一类用户可以对匹配的项目进行安装(install)</span></div><div class="line">  <span class="comment"># publish 表示哪一类用户可以对匹配的项目进行发布(publish)</span></div><div class="line">  <span class="comment"># proxy 当本地没有包的时候使用的代理，对应上面的 uplinks</span></div><div class="line">  <span class="comment"># 一共有以下几种权限：</span></div><div class="line">  <span class="comment"># $all 所有人都可以</span></div><div class="line">  <span class="comment"># $anonymous 只有匿名者可以进行对应操作（通常无用）</span></div><div class="line">  <span class="comment"># $authenticated 只有经过认证的可以进行操作（私有的一定要用这个）</span></div><div class="line"></div><div class="line">  <span class="string">'@*/*'</span>:</div><div class="line"><span class="attr">    access:</span> $all</div><div class="line"><span class="attr">    publish:</span> $authenticated</div><div class="line"></div><div class="line">  <span class="string">'*'</span>:</div><div class="line"><span class="attr">    access:</span> $all</div><div class="line"><span class="attr">    publish:</span> $authenticated</div><div class="line"><span class="attr">    proxy:</span> npmjs</div><div class="line"></div><div class="line"><span class="comment"># 日志的配置</span></div><div class="line"><span class="attr">logs:</span></div><div class="line"><span class="bullet">  -</span> &#123;type: stdout, format: pretty, level: http&#125;</div><div class="line">  <span class="comment">#- &#123;type: file, path: sinopia.log, level: info&#125;</span></div></pre></td></tr></table></figure>
+<p>关于 auth 的配置，为了达到私有的目的，我们把 max_users 设置成 -1 来拒绝添加用户，不过在公司内部我们依然可以使用 htpasswd 这个文件来初始化用户，其格式如下，每一行一个用户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">username:&#123;SHA&#125;经过加密的后密码值:autocreated 2016-07-25T08:55:48.859Z（创建时间）</div></pre></td></tr></table></figure>
+<p>加密算法：将密码使用 SHA1 算法哈希之后再使用 base64 转换再输出就可以了。<br>使用 python 实现的密码加密示例，下面是密码 <code>admin</code> 加密后的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>base64.b64encode(hashlib.sha1(<span class="string">'admin'</span>).digest())</div><div class="line"><span class="string">'0DPiKuNIrrVmD8IUCuw1hQxNqZc='</span></div></pre></td></tr></table></figure>
+<p>配置完成后重启一下 sinopia 服务器就可以了。</p>
+<p>更多配置可以去 <a href="https://github.com/rlidwka/sinopia/blob/master/conf/full.yaml" target="_blank" rel="external">https://github.com/rlidwka/sinopia/blob/master/conf/full.yaml</a> 看看。</p>
+<h3 id="使用-Docker-来搭建-sinopia"><a href="#使用-Docker-来搭建-sinopia" class="headerlink" title="使用 Docker 来搭建 sinopia"></a>使用 Docker 来搭建 sinopia</h3><p>sinopia 提供了一个 Docker 的镜像 <a href="https://registry.hub.docker.com/u/keyvanfatehi/sinopia/" target="_blank" rel="external">https://registry.hub.docker.com/u/keyvanfatehi/sinopia/</a></p>
+<p>我们可以使用这个镜像来快速搭建一个 sinopia</p>
+<h4 id="快速开始-1"><a href="#快速开始-1" class="headerlink" title="快速开始"></a>快速开始</h4><ul>
+<li>安装镜像 <code>docker pull keyvanfatehi/sinopia:latest</code></li>
+<li>创建容器 <code>docker run --name sinopia -d -p 4873:4873 keyvanfatehi/sinopia:latest</code></li>
+<li>现在就算搭建完成了，你可以访问 <code>http://&lt;docker_host&gt;:4873/</code> 来查看效果了</li>
+</ul>
+<p>更详细的文档可以去 <a href="https://github.com/kfatehi/docker-sinopia" target="_blank" rel="external">https://github.com/kfatehi/docker-sinopia</a> 看看</p>
+<h4 id="使用-docker-compose"><a href="#使用-docker-compose" class="headerlink" title="使用 docker-compose"></a>使用 docker-compose</h4><p>通过配置 docker-compose 我们可以更优雅地搭建 sinopia，下面是一个示例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="attr">version:</span> <span class="string">'2'</span></div><div class="line"><span class="attr">services:</span></div><div class="line"><span class="attr">  sinopia:</span></div><div class="line"><span class="attr">    image:</span> keyvanfatehi/sinopia</div><div class="line"><span class="attr">    ports:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">"4873:4873"</span></div><div class="line">    <span class="comment"># 启动的时候执行的命令（启动 sinopia）</span></div><div class="line"><span class="attr">    command:</span> /opt/sinopia/start.sh</div><div class="line"></div><div class="line">    <span class="comment"># 我们在宿主机和 docker 里面同步了 config.yaml 和 htpasswd 这两个文件</span></div><div class="line">    <span class="comment"># 并且把 docker 里面存储的 npm 包也同步到宿主机上面</span></div><div class="line"><span class="attr">    volumes:</span></div><div class="line"><span class="bullet">      -</span> ./config.yaml:/opt/sinopia/config.yaml</div><div class="line"><span class="bullet">      -</span> ./htpasswd:/opt/sinopia/htpasswd</div><div class="line"><span class="bullet">      -</span> /data/storage/:/opt/sinopia/storage/</div></pre></td></tr></table></figure>
+<p>写好了 docker-compose.yml 后就可以通过 <code>docker-compose up</code> 来启动 sinopia 服务。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;为什么搭建私有的-npm-仓库&quot;&gt;&lt;a href=&quot;#为什么搭建私有的-npm-仓库&quot; class=&quot;headerlink&quot; title=&quot;为什么搭建私有的 npm 仓库&quot;&gt;&lt;/a&gt;为什么搭建私有的 npm 仓库&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;发布和管理公司内部的私有
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用Hexo写博客</title>
+    <link href="https://burnishtechcn.github.io/2016/07/04/%E4%BD%BF%E7%94%A8Hexo%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://burnishtechcn.github.io/2016/07/04/使用Hexo写博客/</id>
+    <published>2016-07-04T06:05:08.000Z</published>
+    <updated>2016-07-27T01:48:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="为什么用Hexo"><a href="#为什么用Hexo" class="headerlink" title="为什么用Hexo"></a>为什么用Hexo</h2><ol>
+<li>静态博客，部署在github上，不需要数据库，部署和迁移方便</li>
+<li>使用github管理代码，我们都用github，协作方便</li>
+<li>博客使用markdown格式存储，方便编辑</li>
+<li>有许许多多的插件，扩展方便</li>
+</ol>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ol>
+<li>安装node和Hexo</li>
+<li>安装Burnish博客</li>
+<li>写博客</li>
+<li>发布</li>
+<li>保存源码</li>
+</ol>
+<h3 id="安装node和Hexo"><a href="#安装node和Hexo" class="headerlink" title="安装node和Hexo"></a>安装node和Hexo</h3><p><a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo安装教程</a><br>推荐使用nvm来安装 <a href="https://github.com/creationix/nvm" target="_blank" rel="external">https://github.com/creationix/nvm</a></p>
+<h3 id="安装Burnish博客"><a href="#安装Burnish博客" class="headerlink" title="安装Burnish博客"></a>安装Burnish博客</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># clone 代码</span></div><div class="line">git clone https:<span class="comment">//github.com/BurnishTechCN/BurnishTechCN.github.io.git blog</span></div><div class="line"></div><div class="line"><span class="meta"># 更新git submodule管理的主题</span></div><div class="line">git submodule update --init --recursive</div><div class="line"></div><div class="line"><span class="meta"># 安装依赖</span></div><div class="line">cd blog &amp;&amp; git checkout source &amp;&amp; npm install</div><div class="line"></div><div class="line"><span class="meta"># 生成博客</span></div><div class="line">hexo generate --watch</div><div class="line"></div><div class="line"><span class="meta"># 预览</span></div><div class="line">hexo server</div></pre></td></tr></table></figure>
+<h3 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># 生成新的markdown文件，在source/_post/文件夹下</span></div><div class="line">hexo <span class="keyword">new</span> <span class="string">"your title"</span></div><div class="line"></div><div class="line"><span class="meta"># 写博客，markdown语法</span></div><div class="line">vim source/_post/your title.md</div><div class="line"></div><div class="line"><span class="meta"># 生成博客</span></div><div class="line">hexo generate --watch</div><div class="line"></div><div class="line"><span class="meta"># 预览</span></div><div class="line">hexo server</div><div class="line"></div><div class="line"><span class="meta"># 发布</span></div><div class="line">hexo deploy</div><div class="line"></div><div class="line"><span class="meta"># 将代码push到source分支</span></div><div class="line">git push origin source:source</div></pre></td></tr></table></figure>
+<h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><h3 id="master和source分支的区别"><a href="#master和source分支的区别" class="headerlink" title="master和source分支的区别"></a>master和source分支的区别</h3><p>master分支是github pages展示的静态资源文件，这些文件是由source分支的源代码生成的<br>有更新需要随时push到github的source分支</p>
+<h3 id="使用git-submodule来管理主题"><a href="#使用git-submodule来管理主题" class="headerlink" title="使用git submodule来管理主题"></a>使用git submodule来管理主题</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># 添加submodule, submoduel已经fork到了BurnichTechCN团队</span></div><div class="line">git submodule add https:<span class="comment">//github.com/BurnishTechCN/maupassant-hexo.git themes/maupassant</span></div><div class="line"></div><div class="line"><span class="meta"># 更新主题配置</span></div><div class="line">cd themes/maupassant</div><div class="line">vim _config.yml</div><div class="line">git commit -a</div><div class="line">git push</div><div class="line"></div><div class="line"><span class="meta"># 其他命令参考https://git-scm.com/book/zh/v2/Git-工具-子模块</span></div></pre></td></tr></table></figure>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p><a href="https://hexo.io" target="_blank" rel="external">hexo</a><br><a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="external">主题maupassant</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;为什么用Hexo&quot;&gt;&lt;a href=&quot;#为什么用Hexo&quot; class=&quot;headerlink&quot; title=&quot;为什么用Hexo&quot;&gt;&lt;/a&gt;为什么用Hexo&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;静态博客，部署在github上，不需要数据库，部署和迁移方便&lt;/li&gt;
+&lt;li&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
