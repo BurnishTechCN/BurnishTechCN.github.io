@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.burnish.cn/"/>
-  <updated>2016-07-28T07:46:53.000Z</updated>
+  <updated>2016-08-01T05:58:35.000Z</updated>
   <id>http://blog.burnish.cn/</id>
   
   <author>
@@ -16,11 +16,175 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>RethinkDB 实时数据库</title>
+    <link href="http://blog.burnish.cn/posts/RethinkDB-database-for-the-realtime/"/>
+    <id>http://blog.burnish.cn/posts/RethinkDB-database-for-the-realtime/</id>
+    <published>2016-08-01T05:46:35.000Z</published>
+    <updated>2016-08-01T05:58:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>RethinkDB 是一个为构建实时应用程序而生的开源数据库，它可以实时地向你的应用程序推送数据</p>
+<p><img src="http://img.l.jifangcheng.com/rethinkdb-1.png" alt=""></p>
+<a id="more"></a>
+<h2 id="什么是-RethinkDB"><a href="#什么是-RethinkDB" class="headerlink" title="什么是 RethinkDB"></a>什么是 RethinkDB</h2><ul>
+<li>一个为构建实时应用程序而生的开源数据库</li>
+<li>NoSQL 非关系型数据库，它存储 JSON 数据</li>
+<li>易拓展的分布式数据库</li>
+<li>拥有自动故障转移和强大容错能力的高性能数据库</li>
+</ul>
+<h2 id="RethinkDB-X-Python-快速开始"><a href="#RethinkDB-X-Python-快速开始" class="headerlink" title="RethinkDB X Python 快速开始"></a>RethinkDB X Python 快速开始</h2><h3 id="安装-RethinkDB"><a href="#安装-RethinkDB" class="headerlink" title="安装 RethinkDB"></a>安装 RethinkDB</h3><p>macOS 可以使用 <code>brew install rethinkdb</code> 来快速安装 RethinkDB，其它的系统可以看官网的文档 <a href="https://rethinkdb.com/docs/install/" target="_blank" rel="external">https://rethinkdb.com/docs/install/</a></p>
+<h3 id="安装-Python-连接-RethinkDB-的库"><a href="#安装-Python-连接-RethinkDB-的库" class="headerlink" title="安装 Python 连接 RethinkDB 的库"></a>安装 Python 连接 RethinkDB 的库</h3><p>使用 pip 就可以了 <code>pip install rethinkdb</code></p>
+<h3 id="使用-RethinkDB"><a href="#使用-RethinkDB" class="headerlink" title="使用 RethinkDB"></a>使用 RethinkDB</h3><ul>
+<li>首先启动 RethinkDB</li>
+</ul>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>rethinkdb</div></pre></td></tr></table></figure>
+<ul>
+<li>在 python 里面引入 RethinkDB 的库就可以操作它了</li>
+</ul>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ python</div><div class="line"></div><div class="line">&gt;&gt;&gt; <span class="keyword">import</span> rethinkdb <span class="keyword">as</span> r</div></pre></td></tr></table></figure>
+<ul>
+<li>连接数据库</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">r<span class="selector-class">.connect</span>(<span class="string">"localhost"</span>, <span class="number">28015</span>)<span class="selector-class">.repl</span>()</div></pre></td></tr></table></figure>
+<p><em>注意：<code>repl</code> 方法仅适合在 shell 里面调试使用，它会给你当前的 shell 环境设置一个默认的连接，使得你不用每次都给 <code>run</code> 方法传一个 <code>connection</code> 对象进去。但是，在生产环境中你不能使用这种方法，你执行的每个查询命令都必须要给 <code>run</code> 方法传一个 <code>connection</code> 对象进去，你可以看一下这个<a href="https://github.com/rethinkdb/rethinkdb-example-flask-backbone-todo/blob/master/todo.py" target="_blank" rel="external">简单的示例</a></em></p>
+<ul>
+<li>创建一张表</li>
+</ul>
+<p>在 <code>test</code> 数据库里创建一张 <code>authors</code> 表</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">r<span class="selector-class">.db</span>(<span class="string">"test"</span>)<span class="selector-class">.table_create</span>(<span class="string">"authors"</span>)<span class="selector-class">.run</span>()</div></pre></td></tr></table></figure>
+<p>你应该会得到和下面类似的结果：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"config_changes"</span>: [</div><div class="line">        &lt;table configuration data&gt;</div><div class="line">    ],</div><div class="line">    <span class="attr">"tables_created"</span>: <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>RethinkDB 默认创建了一个名为 <code>test</code> 的数据库，你可以使用 <code>r.db_create(db_name)</code> 来创建一个数据库</em></p>
+<h4 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h4><p>使用 <code>insert()</code> 方法来插入数据，插入的数据都是 JSON 格式的</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">r.table(<span class="string">"authors"</span>).<span class="keyword">insert</span>([</div><div class="line">    &#123; <span class="string">"name"</span>: <span class="string">"William Adama"</span>, <span class="string">"tv_show"</span>: <span class="string">"Battlestar Galactica"</span>,</div><div class="line">      <span class="string">"posts"</span>: [</div><div class="line">        &#123;<span class="string">"title"</span>: <span class="string">"Decommissioning speech"</span>, <span class="string">"content"</span>: <span class="string">"The Cylon War is long over..."</span>&#125;,</div><div class="line">        &#123;<span class="string">"title"</span>: <span class="string">"We are at war"</span>, <span class="string">"content"</span>: <span class="string">"Moments ago, this ship received..."</span>&#125;</div><div class="line">      ]</div><div class="line">    &#125;,</div><div class="line">    &#123; <span class="string">"name"</span>: <span class="string">"Laura Roslin"</span>, <span class="string">"tv_show"</span>: <span class="string">"Battlestar Galactica"</span>,</div><div class="line">      <span class="string">"posts"</span>: [</div><div class="line">        &#123;<span class="string">"title"</span>: <span class="string">"The oath of office"</span>, <span class="string">"content"</span>: <span class="string">"I, Laura Roslin, ..."</span>&#125;,</div><div class="line">        &#123;<span class="string">"title"</span>: <span class="string">"They look like us"</span>, <span class="string">"content"</span>: <span class="string">"The Cylons have the ability..."</span>&#125;</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">]).run()</div></pre></td></tr></table></figure>
+<p><em>注意：因为我们上面连接时使用了 <code>repl</code> 方法，所以这里的 <code>run</code> 不用传一个 <code>connection</code> 对象进去。但是生产环境里面不能使用这种方法，下面是生产环境应该使用的方法的一个示例</em></p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">rdb_conn</span> = r.connect(<span class="attr">host=RDB_HOST,</span> <span class="attr">port=RDB_PORT,</span> <span class="attr">db=DB)</span></div><div class="line"></div><div class="line">r.table(<span class="string">"authors"</span>).insert(……).run(rdb_conn)</div></pre></td></tr></table></figure>
+<h4 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h4><ul>
+<li>查询所有数据</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cursor</span> = r.table(<span class="string">"authors"</span>).<span class="built_in">run</span>()</div><div class="line"><span class="built_in">for</span> document in <span class="built_in">cursor</span>:</div><div class="line">    <span class="built_in">print</span>(document)</div></pre></td></tr></table></figure>
+<p>这个操作会返回 <code>authors</code> 表里面的所有数据，每条数据都会附带它的 <code>id</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="string">u'name'</span>: <span class="string">u'hello'</span>, <span class="string">u'id'</span>: <span class="string">u'6ca50999-75eb-4af4-b9b0-bbac478dc884'</span>&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>条件查询</li>
+</ul>
+<p>下面的操作会返回 <code>name</code> 是 <code>William Adama</code> 的数据</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cursor</span> = r.table(<span class="string">"authors"</span>).filter(r.row[<span class="string">"name"</span>] == <span class="string">"William Adama"</span>).<span class="built_in">run</span>()</div><div class="line"><span class="built_in">for</span> document in <span class="built_in">cursor</span>:</div><div class="line">    <span class="built_in">print</span>(document)</div></pre></td></tr></table></figure>
+<p>下面的操作会返回数据里面 <code>posts</code> 大于 2 条记录的数据</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cursor = r.<span class="keyword">table</span>(<span class="string">"authors"</span>).filter(r.row[<span class="string">"posts"</span>].<span class="keyword">count</span>() &gt; 2).<span class="keyword">run</span>()</div><div class="line"><span class="keyword">for</span> document <span class="keyword">in</span> cursor:</div><div class="line">    <span class="keyword">print</span>(document)</div></pre></td></tr></table></figure>
+<ul>
+<li>查询单条记录</li>
+</ul>
+<p>查询 <code>id</code> 为 <code>7644aaf2-9928-4231-aa68-4e65e31bf219</code> 的数据</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">r<span class="selector-class">.db</span>(<span class="string">'test'</span>)<span class="selector-class">.table</span>(<span class="string">'authors'</span>)<span class="selector-class">.get</span>(<span class="string">'7644aaf2-9928-4231-aa68-4e65e31bf219'</span>)<span class="selector-class">.run</span>()</div></pre></td></tr></table></figure>
+<h4 id="实时数据"><a href="#实时数据" class="headerlink" title="实时数据"></a>实时数据</h4><p>使用 <code>changes()</code> 方法来监听数据的变化</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cursor</span> = r.table(<span class="string">"authors"</span>).changes().<span class="built_in">run</span>()</div><div class="line"><span class="built_in">for</span> document in <span class="built_in">cursor</span>:</div><div class="line">    <span class="built_in">print</span>(document)</div></pre></td></tr></table></figure>
+<h4 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h4><p>使用 <code>update()</code> 方法来删除数据</p>
+<p>更新所有数据</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">r.<span class="keyword">table</span>(<span class="string">"authors"</span>).<span class="keyword">update</span>(&#123;<span class="string">"type"</span>: <span class="string">"fictional"</span>&#125;).<span class="keyword">run</span>()</div></pre></td></tr></table></figure>
+<p>结合 <code>filter</code> 更新指定数据</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">r.table(<span class="string">"authors"</span>).</div><div class="line">    filter(r.row[<span class="string">'name'</span>] == <span class="string">"William Adama"</span>).</div><div class="line">    update(&#123;<span class="string">"rank"</span>: <span class="string">"Admiral"</span>&#125;).run()</div></pre></td></tr></table></figure>
+<p>更新数组的数据</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">r.table(<span class="string">'authors'</span>).filter(r.row[<span class="string">"name"</span>] == <span class="string">"Jean-Luc Picard"</span>).</div><div class="line">    update(&#123;<span class="string">"posts"</span>: r.row[<span class="string">"posts"</span>].append(&#123;</div><div class="line">        <span class="string">"title"</span>: <span class="string">"Shakespeare"</span>,</div><div class="line">        <span class="string">"content"</span>: <span class="string">"What a piece of work is man..."</span>&#125;)</div><div class="line">    &#125;).run()</div></pre></td></tr></table></figure>
+<h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><p>使用 <code>delete()</code> 方法来删除数据</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">r<span class="selector-class">.table</span>(<span class="string">"authors"</span>).</div><div class="line">    <span class="selector-tag">filter</span>( r.row[<span class="string">"posts"</span>].count() &lt; <span class="number">3</span> ).</div><div class="line">    <span class="selector-tag">delete</span>()<span class="selector-class">.run</span>()</div></pre></td></tr></table></figure>
+<h2 id="RethinkDB-驱动"><a href="#RethinkDB-驱动" class="headerlink" title="RethinkDB 驱动"></a>RethinkDB 驱动</h2><p>RethinkDB 官方提供了对 JavaScript, Python, Ruby, Java 四种语言的支持，还有很多社区贡献的第三方的对其它语言的支持，你可以在下面的这个网址里面找到<br><a href="https://rethinkdb.com/docs/install-drivers/" target="_blank" rel="external">https://rethinkdb.com/docs/install-drivers/</a></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://rethinkdb.com" target="_blank" rel="external">RethinkDB: the open-source database for the realtime web</a></li>
+<li><a href="https://rethinkdb.com/docs/" target="_blank" rel="external">RethinkDB Documentation</a></li>
+<li><a href="https://github.com/rethinkdb/rethinkdb" target="_blank" rel="external">https://github.com/rethinkdb/rethinkdb</a></li>
+</ul>
+<p><img src="http://img.l.jifangcheng.com/rethinkdb-2.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;RethinkDB 是一个为构建实时应用程序而生的开源数据库，它可以实时地向你的应用程序推送数据&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://img.l.jifangcheng.com/rethinkdb-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>极致简洁 Markdown</title>
+    <link href="http://blog.burnish.cn/posts/Extreme-simplicity-Markdown/"/>
+    <id>http://blog.burnish.cn/posts/Extreme-simplicity-Markdown/</id>
+    <published>2016-07-28T09:23:37.000Z</published>
+    <updated>2016-07-29T09:54:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成有效的 XHTML/HTML 文档</p>
+<a id="more"></a>
+<h2 id="什么是-Markdown"><a href="#什么是-Markdown" class="headerlink" title="什么是 Markdown"></a>什么是 Markdown</h2><p><img src="http://img.l.jifangcheng.com/markdown-1.png" alt="Markdown"></p>
+<h3 id="宗旨"><a href="#宗旨" class="headerlink" title="宗旨"></a>宗旨</h3><p>Markdown 的目标是实现「易读易写」。</p>
+<p>Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像强调。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。</p>
+<h3 id="Markdown-和-HTML"><a href="#Markdown-和-HTML" class="headerlink" title="Markdown 和 HTML"></a>Markdown 和 HTML</h3><ul>
+<li>Markdown 不是想要取代 HTML，甚至也没有要和它相近，它的语法种类很少，只对应 HTML 标记的一小部分。</li>
+<li>Markdown 的格式语法只涵盖纯文本可以涵盖的范围。</li>
+<li>Markdown 的构想不是要使得 HTML 文档更容易书写，它的理念是，能让文档更容易读、写和改。</li>
+<li>HTML 是一种发布的格式，Markdown 是一种书写的格式。</li>
+</ul>
+<h2 id="为什么使用-Markdown"><a href="#为什么使用-Markdown" class="headerlink" title="为什么使用 Markdown"></a>为什么使用 Markdown</h2><ul>
+<li>纯文本，所以兼容性极强，可以用所有文本编辑器打开</li>
+<li>专注写作，而不是关注排版</li>
+<li>格式转换方便，Markdown 的文本可以轻松转换为 html、PDF等</li>
+<li>Markdown 的标记语法有极好的可读性</li>
+</ul>
+<h2 id="Markdown-语法简介"><a href="#Markdown-语法简介" class="headerlink" title="Markdown 语法简介"></a>Markdown 语法简介</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题 #"></a>标题 <code>#</code></h3><p>以 <code>#</code> 开始，一个 <code>#</code> 对应一级标题，最多可以有 6 级标题</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#       一级标题 H1</span></div><div class="line"><span class="meta">##      二级标题 H2</span></div><div class="line"><span class="meta">###     三级标题 H3</span></div><div class="line"><span class="meta">####    四级标题 H4</span></div><div class="line"><span class="meta">#####   五级标题 H5</span></div><div class="line"><span class="meta">######  六级标题 H6</span></div></pre></td></tr></table></figure>
+<h3 id="强调"><a href="#强调" class="headerlink" title="强调 *"></a>强调 <code>*</code></h3><p>用 <code>*</code> 包裹文字表示强调，一字 <code>*</code> 包裹的表示斜体，两个表示粗体</p>
+<p><img src="http://img.l.jifangcheng.com/markdown-6.png" alt="Markdown"></p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表 *"></a>列表 <code>*</code></h3><p>单个 <code>*</code> 表示这是一个无序列表，用数字表示这是一个有序列表</p>
+<p><img src="http://img.l.jifangcheng.com/markdown-5.png" alt="Markdown"></p>
+<h3 id="引用-gt"><a href="#引用-gt" class="headerlink" title="引用 &gt;"></a>引用 <code>&gt;</code></h3><p>使用 <code>&gt;</code> 表示这段文字是一个引用</p>
+<p><img src="http://img.l.jifangcheng.com/markdown-7.png" alt="Markdown"></p>
+<h3 id="链接和图片"><a href="#链接和图片" class="headerlink" title="链接和图片"></a>链接和图片</h3><p>链接的格式：<code>[链接内容](链接地址)</code><br>图片的格式和链接类似，只不过在前端加一个 <code>!</code>：<code>![图片描述](图片地址)</code></p>
+<p><img src="http://img.l.jifangcheng.com/markdown-8.png" alt="Markdown"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>使用 ` ` 表示行内代码，``` 表示多行代码</p>
+<p><img src="http://img.l.jifangcheng.com/markdown-9.png" alt="Markdown"></p>
+<h2 id="GitHub-Flavored-Markdown"><a href="#GitHub-Flavored-Markdown" class="headerlink" title=" GitHub Flavored Markdown"></a><i class="fa fa-github" aria-hidden="true"></i> GitHub Flavored Markdown</h2><p>GitHub Flavored Markdown 是 GitHub 使用的 Markdown 格式，对 Markdown 增加了一些新功能</p>
+<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>``` 后面加上编程语言可以让代码按照你指定的语言进行高亮</p>
+<pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fancyAlert</span>(<span class="params">arg</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(arg) &#123;</div><div class="line">    $.facebox(&#123;div:<span class="string">'#foo'</span>&#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+</pre>
+
+<h3 id="任务列表"><a href="#任务列表" class="headerlink" title="任务列表"></a>任务列表</h3><p>下面的的这种格式会被渲染成一个任务列表</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">- </span>[<span class="string">x</span>] @mentions, #refs, [<span class="string">links</span>](<span class="link"></span>), <span class="strong">**formatting**</span>, and <span class="xml"><span class="tag">&lt;<span class="name">del</span>&gt;</span></span>tags<span class="xml"><span class="tag">&lt;/<span class="name">del</span>&gt;</span></span> supported</div><div class="line"><span class="bullet">- </span>[x] list syntax required (any unordered or ordered list supported)</div><div class="line"><span class="bullet">- </span>[x] this is a complete item</div><div class="line"><span class="bullet">- </span>[ ] this is an incomplete item</div></pre></td></tr></table></figure>
+<p><img src="http://img.l.jifangcheng.com/markdown-3.png" alt="Markdown"></p>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>下面的这种格式会被渲染成一个表格</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">First Header | Second Header</div><div class="line"><span class="comment">------------ | -------------</span></div><div class="line">Content <span class="built_in">from</span> cell <span class="number">1</span> | Content <span class="built_in">from</span> cell <span class="number">2</span></div><div class="line">Content <span class="keyword">in</span> <span class="keyword">the</span> <span class="keyword">first</span> column | Content <span class="keyword">in</span> <span class="keyword">the</span> <span class="keyword">second</span> column</div></pre></td></tr></table></figure>
+<p><img src="http://img.l.jifangcheng.com/markdown-4.png" alt="Markdown"></p>
+<h3 id="引用-SHA-值"><a href="#引用-SHA-值" class="headerlink" title="引用 SHA 值"></a>引用 SHA 值</h3><p>对任何 commit 的 SHA 值的引用都会自动转换成这个 commit 的链接</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">16c999e8c71134401a78d4d46435517b2271d6ac</div><div class="line">mojombo<span class="variable">@16c999e8c71134401a78d4d46435517b2271d6ac</span></div><div class="line">mojombo/github-flavored-markdown<span class="variable">@16c999e8c71134401a78d4d46435517b2271d6ac</span></div></pre></td></tr></table></figure>
+<h3 id="引用-Issue"><a href="#引用-Issue" class="headerlink" title="引用 Issue"></a>引用 Issue</h3><p>你可以直接引用一个 Issue 或者 Pull Request 的编号，它们会被自动的转换成链接</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#1</span></div><div class="line">mojombo<span class="comment">#1</span></div><div class="line">mojombo/github-flavored-markdown<span class="comment">#1</span></div></pre></td></tr></table></figure>
+<h3 id=""><a href="#" class="headerlink" title="@"></a>@</h3><p>使用 <code>@</code> 符号来提醒一个人查看这个消息</p>
+<h3 id="URL-地址自动链接"><a href="#URL-地址自动链接" class="headerlink" title="URL 地址自动链接"></a>URL 地址自动链接</h3><p>任何的链接（比如 <code>http://www.github.com/</code>）都会自动转换成可以点击的链接</p>
+<h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h3><p>使用 <code>~~这个~~</code> 表示删除线，会呈现出 <del>这样</del> 的效果</p>
+<h3 id="Emoji"><a href="#Emoji" class="headerlink" title="Emoji"></a>Emoji</h3><p><i class="fa fa-github" aria-hidden="true"></i> GitHub 当然也支持 🐶 Emoji</p>
+<h2 id="一些有用的链接"><a href="#一些有用的链接" class="headerlink" title="一些有用的链接"></a>一些有用的链接</h2><ul>
+<li>Markdown 项目主页：<a href="https://daringfireball.net/projects/markdown/" target="_blank" rel="external">https://daringfireball.net/projects/markdown/</a></li>
+<li><a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="external">Mastering Markdown · GitHub Guides</a></li>
+<li><a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown 语法说明(简体中文版)</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成有效的 XHTML/HTML 文档&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Atom - The hackable text editor</title>
     <link href="http://blog.burnish.cn/posts/Atom-The-hackable-text-editor/"/>
     <id>http://blog.burnish.cn/posts/Atom-The-hackable-text-editor/</id>
     <published>2016-07-27T09:11:03.000Z</published>
-    <updated>2016-07-28T07:46:53.000Z</updated>
+    <updated>2016-07-28T09:04:32.000Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://github.com/atom/atom" target="_blank" rel="external">Atom</a> 起初是一个 GitHub 内部的小项目，后来发展壮大成为一个正式的开源项目。Atom 基于 <a href="https://github.com/electron/electron" target="_blank" rel="external">Electron</a>（Electron 是一个可以让你用 JavaScript, HTML 和 CSS 来写跨平台桌面应用程序的框架），Atom 是用 <a href="http://coffeescript.org" target="_blank" rel="external">CoffeeScript</a> 写的，相当于一个 Web App，也正是因为这样，其可定制程度非常高。</p>
 <p>如果你以前用过 Sublime Text，你会发现 Atom 和 Sublime 非常像，连快捷键都基本一样，但是它们真的没有关系。</p>
@@ -117,7 +281,7 @@
     <link href="http://blog.burnish.cn/posts/build-private-npm-repository-server/"/>
     <id>http://blog.burnish.cn/posts/build-private-npm-repository-server/</id>
     <published>2016-07-26T05:38:31.000Z</published>
-    <updated>2016-07-28T08:31:57.000Z</updated>
+    <updated>2016-07-28T09:04:32.000Z</updated>
     
     <content type="html"><![CDATA[<a id="more"></a>
 <h2 id="为什么搭建私有的-npm-仓库"><a href="#为什么搭建私有的-npm-仓库" class="headerlink" title="为什么搭建私有的 npm 仓库"></a>为什么搭建私有的 npm 仓库</h2><ul>
@@ -179,7 +343,7 @@
     <link href="http://blog.burnish.cn/posts/use-Hexo/"/>
     <id>http://blog.burnish.cn/posts/use-Hexo/</id>
     <published>2016-07-04T06:05:08.000Z</published>
-    <updated>2016-07-28T08:31:45.000Z</updated>
+    <updated>2016-07-28T09:04:32.000Z</updated>
     
     <content type="html"><![CDATA[<a id="more"></a>
 <h2 id="为什么用Hexo"><a href="#为什么用Hexo" class="headerlink" title="为什么用Hexo"></a>为什么用Hexo</h2><ol>
