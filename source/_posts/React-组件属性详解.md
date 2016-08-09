@@ -1,6 +1,6 @@
 title: React - 组件属性详解
 date: 2016-08-09 10:19:17
-permalink:
+permalink: react-1
 category: "FrontEnd"
 tags: React
 ---
