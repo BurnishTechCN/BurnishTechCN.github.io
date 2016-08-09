@@ -43,6 +43,10 @@ highlight:
   auto_detect: true
   tab_replace:
 
+marked:
+  gfm: true
+  breaks: false
+
 # Category & Tag
 default_category: uncategorized
 category_map:
