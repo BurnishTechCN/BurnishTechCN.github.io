@@ -30,7 +30,7 @@ tags: React
 
 ## JSX
 
-* React 中，HTML 代码与 js 代码是混合在一起写的，初学者看起来可能有些疯狂，中间看起来像 HTML 的代码就是 JSX，它很像一般的 HTML ，不过它并不是比如它不支持`class=`，而是`className=`等。
+* React 中，HTML 代码与 js 代码是混合在一起写的，初学者看起来可能有些疯狂，中间看起来像 HTML 的代码就是 JSX，它很像一般的 HTML ，不过它并不是。比如它不支持`class=`，而是`className=`等。
 * JSX 最终会被解析成 javascript 代码，你可以使用 `.js` 或者 `.jsx` 为文件后缀名。
 
   ```
@@ -81,7 +81,7 @@ tags: React
 
 * `render` 方法是每个 component 所必须的。
 * `render` 返回值只能是 JSX、`null` 或者 `false`。
-* `render` 是纯粹的，不能够在 render 里面修改 `state` 或者读写 DOM 信息，也不能与浏览器交互如调用 `setTiemout` 等。
+* `render` 是纯粹的，不能够在 render 里面修改 `state` 或者读写 DOM 信息，也不能与浏览器交互，如调用 `setTiemout` 等。
 * 当组件检测到 `state` 或 `props` 改变时，`render` 会重新被调用。
 
 ## getInitialState [Function]
@@ -209,7 +209,7 @@ tags: React
 ## displayName [String]
 
 * 字符串用于输出调试信息。
-* 不推荐使用 `displayName` 来调用 component, 而是使用组件名称引用。
+* 不推荐使用 `displayName` 来调用 component，而是使用组件名称引用。
 
  ```
  // bad
@@ -271,13 +271,13 @@ tags: React
 ##  componentWillUnmount [Function]
 
 * 在组件从 DOM 中移除的时候立刻被调用。
-* 常用来执行页面切换后的后续操作，如 `clearInterval` 等。
+* 常用来执行页面切换后的后续操作，如页面切换后想 `clearInterval` 掉当前页面的定时器。
 
 # 尾声
 
   以上就是 React 组件属性的概览说明了，想要了解更多请查看[React官方文档](https://facebook.github.io/react/)。并且虽然 React 构建 UI 非常出色，但是还是需要手工管理其 `state` 和 `props`。
 
-  在实际运用中经常会跟 flux 模型结合使用，来自动化管理状态，推荐的使用 `redux` 来配合使用。在后续的章节会陆续讲到。
+  在实际运用中经常会跟 flux 模型结合使用，来自动化管理状态，推荐使用 `redux` 来配合使用，在后续的章节会陆续讲到。
 
   如果你决定使用 React 来构建你的应用的话，你还会涉及到一些名词如 `babel` `webpack` 等，我们提供了一个[React 脚手架](https://github.com/BurnishTechCN/react)，来快速构建一个高效的 react 项目，希望可以帮到你。
 
